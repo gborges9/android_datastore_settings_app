@@ -21,16 +21,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    private var _settingsManager: UserSettingsManager? = null
+    private lateinit var settingsManager: UserSettingsManager
 
-    private val settingsManager: UserSettingsManager get() = _settingsManager!!
-
-    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        _settingsManager = UserSettingsManager(this)
+        settingsManager = UserSettingsManager(this)
 
         val lightThemeBtn = findViewById<MaterialRadioButton>(R.id.lightRadioBtn)
         val darkThemeBtn = findViewById<MaterialRadioButton>(R.id.darkRadioBtn)
